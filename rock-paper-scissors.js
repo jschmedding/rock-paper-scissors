@@ -38,15 +38,14 @@ function playRound(playerSelection, computerChoice) {
         return console.log("Draw!");
     }
 }
-playRound(playerSelection, computerChoice)
-// let win = 0;
-// function roundWin() {
-//     win++;
-//     console.log("You win! " + playerSelection + " beats " + computerChoice + "!");
-// }
-// function roundLoss() {
-//     console.log(`You lose! ${computerChoice} beats ${playerSelection.toLowerCase()}!`);
-// }
+// playRound(playerSelection, computerChoice)
+let win = 0;
+function roundWin() {
+    return [console.log(`You win! ${playerSelection.toLowerCase()}  beats  ${computerChoice}!`), win++]
+}
+function roundLoss() {
+    return console.log(`You lose! ${computerChoice} beats ${playerSelection.toLowerCase()}!`);
+}
 // // console.log(playRound(playerSelection, computerChoice));
 
 // // Game function
