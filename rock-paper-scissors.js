@@ -20,7 +20,7 @@ let win = 0;
 let loss = 0;
 /* Play one round */
 let playerSelection;
-playerSelection = window.prompt('rock, paper, or scissors?');
+
 function playRound(playerSelection, computerChoice) {
     if (playerSelection.toLowerCase() === "rock" && computerChoice === "paper") {
         return roundLoss();
@@ -51,6 +51,7 @@ function roundLoss() {
 function game() {
     for (i = 0; i < 5;) {
         getComputerChoice();
+        playerSelection = window.prompt('rock, paper, or scissors?');
         return playRound(playerSelection, computerChoice);
         }
     if (i = 5 && win > 2) {
