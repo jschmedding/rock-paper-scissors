@@ -18,6 +18,7 @@ if (randChoice === 0) {
 // console.log(computerChoice);
 let win = 0;
 let loss = 0;
+let i = 0;
 /* Play one round */
 let playerSelection;
 
@@ -40,19 +41,19 @@ function playRound(playerSelection, computerChoice) {
 }
 
 function roundWin() {
-    return [console.log(`You win! ${playerSelection}  beats  ${computerChoice}!`), win++, i++]
+    return [console.log(`You win! ${playerSelection}  beats  ${computerChoice}!`), win++]
 }
 function roundLoss() {
-    return [console.log(`You lose! ${computerChoice} beats ${playerSelection}!`), loss++, i++];
+    return [console.log(`You lose! ${computerChoice} beats ${playerSelection}!`), loss++];
 }
 // // console.log(playRound(playerSelection, computerChoice));
 
 // // Game function
 function game() {
-    for (i = 0; i < 5;) {
+    for (let i = 0; i < 5; i++) {
         getComputerChoice();
         playerSelection = window.prompt('rock, paper, or scissors?');
-        return playRound(playerSelection, computerChoice);
+        playRound(playerSelection, computerChoice);
         }
     if (i = 5 && win > 2) {
        return console.log("You win the game!");
