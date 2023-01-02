@@ -16,66 +16,48 @@ if (randChoice === 0) {
 // Test function
 // getComputerChoice();
 // console.log(computerChoice);
-
-
+let win = 0;
+let loss = 0;
 /* Play one round */
 let playerSelection;
+playerSelection = window.prompt('rock, paper, or scissors?');
 function playRound(playerSelection, computerChoice) {
-    playerSelection = window.prompt('rock, paper, or scissors?')
     if (playerSelection.toLowerCase() === "rock" && computerChoice === "paper") {
-        return console.log("playerLose1");
+        return roundLoss();
     } else if (playerSelection.toLowerCase() === "rock" && computerChoice === "scissors") {
-        return console.log("playerWin1");
+        return roundWin();
     } else if (playerSelection.toLowerCase() === "paper" && computerChoice === "rock") {
-        return console.log("playerWin2");
+        return roundWin();
     } else if (playerSelection.toLowerCase() === "paper" && computerChoice === "scissors") {
-        return console.log("playerLose2");
+        return roundLoss();
     } else if (playerSelection.toLowerCase() === "scissors" && computerChoice === "paper") {
-        return console.log("playerWin3");
+        return roundWin();
     } else if (playerSelection.toLowerCase() === "scissors" && computerChoice === "rock") {
-        return console.log("playerLose3");
+        return roundLoss();
     } else {
         return console.log("Draw!");
     }
 }
-// playRound(playerSelection, computerChoice)
-let win = 0;
+
 function roundWin() {
-    return [console.log(`You win! ${playerSelection.toLowerCase()}  beats  ${computerChoice}!`), win++]
+    return [console.log(`You win! ${playerSelection}  beats  ${computerChoice}!`), win++, i++]
 }
 function roundLoss() {
-    return console.log(`You lose! ${computerChoice} beats ${playerSelection.toLowerCase()}!`);
+    return [console.log(`You lose! ${computerChoice} beats ${playerSelection}!`), loss++, i++];
 }
 // // console.log(playRound(playerSelection, computerChoice));
 
 // // Game function
-// function game() {
-//     for (let i = 0; i < 5;) {
-        
-//         playRound(playerSelection, computerChoice);
-//         if (playRound(playerSelection, computerChoice) === playerWin) {
-//             i++;
-//             roundWin();
-//         }
-//         else if (playRound(playerSelection, computerChoice) === playerLose) {
-//             i++;
-//             return roundLoss();
-//         }
-//         else {
-//             console.log("Draw!");
-//         }
-//         // if (playRound(playerSelection, computerChoice) == "Draw!") {
-//         //     return [i--, console.log("Draw!")]
-//         // }
-//         // instead of decrement, try only incrementing on win/loss
-//     }
-//     if (i = 5 && win >= 3) {
-//         console.log("You win the game!")
-//     } else if (i = 5 && win < 3){
-//         console.log("You lose the game!")
-//     } else {
-//         console.log("Time for the next round!")
-//     }
-// }
+function game() {
+    for (i = 0; i < 5;) {
+        getComputerChoice();
+        return playRound(playerSelection, computerChoice);
+        }
+    if (i = 5 && win > 2) {
+       return console.log("You win the game!");
+    } else {
+       return console.log("You lose the game!");
+    }
+}
 
-// game();
+game();
