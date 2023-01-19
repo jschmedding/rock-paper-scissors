@@ -1,67 +1,64 @@
 
-/* Function to create computer's choice in one round */
+/* Generate computer's choice */
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
     const randomChoice = choices[Math.floor(Math.random() * choices.length)];
     return randomChoice;
 }
+
 let computerChoice = getComputerChoice();
-// const randChoice = getComputerChoice();
-// let computerChoice;
-// if (randChoice === 0) {
-//     computerChoice = "rock";
-// } else if (randChoice === 1) {
-//     computerChoice = "paper";
-// } else {
-//     computerChoice = "scissors";
-// }
-// Test function
-// getComputerChoice();
-// console.log(computerChoice);
 
 let win = 0;
 let loss = 0;
 
 /* Play one round */
 let playerSelection;
+let result;
 
 function playRound(playerSelection, computerChoice) {
     if (playerSelection.toLowerCase() === "rock" && computerChoice === "paper") {
-        return roundLoss();
+        result = "loss";
     } else if (playerSelection.toLowerCase() === "rock" && computerChoice === "scissors") {
-        return roundWin();
+        result = "win";
     } else if (playerSelection.toLowerCase() === "paper" && computerChoice === "rock") {
-        return roundWin();
+        result = "win";
     } else if (playerSelection.toLowerCase() === "paper" && computerChoice === "scissors") {
-        return roundLoss();
+        result = "loss";
     } else if (playerSelection.toLowerCase() === "scissors" && computerChoice === "paper") {
-         return roundWin();
+        result = "win";
     } else if (playerSelection.toLowerCase() === "scissors" && computerChoice === "rock") {
-         return roundLoss();
+        result = "loss";
     } else {
-        return tie;
+        result = "tie";
     }
 }
 
+// Player wins round
 function roundWin() {
     [console.log(`You win! ${playerSelection}  beats  ${computerChoice}!`), win++]
 }
+
+// Player loses round
 function roundLoss() {
     [console.log(`You lose! ${computerChoice} beats ${playerSelection}!`), loss++];
 }
-let tie = "Draw!";
-// // console.log(playRound(playerSelection, computerChoice));
 
-// // Game function
+
+
+// // Game function - play to 5 rounds (increments only on win/loss)
 function game() {
     for (let i = 0; i < 5;) {
-        let computerChoice = getComputerChoice();
+        computerChoice = getComputerChoice();
         playerSelection = window.prompt('rock, paper, or scissors?');
-        // playRound(playerSelection, computerChoice);
-        if (playRound(playerSelection, computerChoice) === tie) {
-            console.log(tie);
-        } else {
+        playRound(playerSelection, computerChoice);
+        if (result === "tie") {
+            console.log("Draw!");
+        } else if (result === "win") {
             i++;
+            roundWin();
+        } else if (result === "loss") {
+            i++; 
+            roundLoss();
         }
     }
     if (i = 5 && win > loss) {
