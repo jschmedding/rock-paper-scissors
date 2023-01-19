@@ -1,7 +1,7 @@
 
 /* Function to create computer's choice in one round */
 function getComputerChoice() {
-    const choices = ['rock', 'paper', 'scissors'];
+    const choices = ["rock", "paper", "scissors"];
     const randomChoice = choices[Math.floor(Math.random() * choices.length)];
     return randomChoice;
 }
@@ -39,7 +39,7 @@ function playRound(playerSelection, computerChoice) {
     } else if (playerSelection.toLowerCase() === "scissors" && computerChoice === "rock") {
          return roundLoss();
     } else {
-        console.log("Draw!");
+        return tie;
     }
 }
 
@@ -49,20 +49,25 @@ function roundWin() {
 function roundLoss() {
     [console.log(`You lose! ${computerChoice} beats ${playerSelection}!`), loss++];
 }
+let tie = "Draw!";
 // // console.log(playRound(playerSelection, computerChoice));
 
 // // Game function
 function game() {
-    for (let i = 0; i < 5; i++){
+    for (let i = 0; i < 5;) {
         let computerChoice = getComputerChoice();
-        getComputerChoice();
         playerSelection = window.prompt('rock, paper, or scissors?');
-        playRound(playerSelection, computerChoice);
+        // playRound(playerSelection, computerChoice);
+        if (playRound(playerSelection, computerChoice) === tie) {
+            console.log(tie);
+        } else {
+            i++;
         }
+    }
     if (i = 5 && win > loss) {
-       return console.log("You win the game!");
+       return console.log(`You won the game ${win} points to ${loss}!`);
     } else {
-       return console.log("You lose the game!");
+       return console.log(`You lost the game ${loss} points to ${win}!`);
     }
 }
 
